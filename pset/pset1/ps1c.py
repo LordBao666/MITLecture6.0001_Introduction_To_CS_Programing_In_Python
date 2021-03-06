@@ -103,7 +103,7 @@ def main():
         # 如果是上面第2种情况
         if begin >= end - 1:
             portion_saved = end / 10000
-        print("Savings: " + str(savings_after_36months))
+        # print("Savings: " + str(savings_after_36months))
         print("Best savings rate: " + str(portion_saved))
         print("Steps in bisection search: " + str(num_guesses))
     else:
