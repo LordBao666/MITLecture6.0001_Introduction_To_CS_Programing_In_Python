@@ -4,7 +4,7 @@
 
 """
 
-FILE_NAME = "source"
+FILE_NAME = "source1"
 
 """
   纯粹是为了练习 else 语句，才这样写。完全可以写到try 语句里面来
@@ -14,11 +14,12 @@ FILE_NAME = "source"
 def load_file():
     try:
         print("###########加载文件############")
+        file_handle = None
         file_handle = open(FILE_NAME, 'r')
         dividend_str_list = [i for i in file_handle.readline()[:-1].split()]
         divisor_str_list = [i for i in file_handle.readline()[:-1].split()]
 
-    except IOError:
+    except:
         raise IOError("文件加载失败，检查路径是否正确")
     else:
         # 这个语句完全可以放在try里面，但是有可能因为这行一句在try发生bug,
@@ -27,7 +28,8 @@ def load_file():
         print("###########加载成功############")
         return dividend_str_list, divisor_str_list
     finally:
-        file_handle.close()
+        if file_handle != None:
+            file_handle.close()
 
 
 # ############## 测试load_file() ##################
