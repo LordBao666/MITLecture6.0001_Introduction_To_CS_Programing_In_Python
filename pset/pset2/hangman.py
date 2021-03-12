@@ -1,4 +1,4 @@
-# Problem Set 2, hangman.py
+# Problem Set why_mid_plus_1(chap10.3), hangman.py
 # Name: 
 # Collaborators:
 # Time spent:
@@ -439,7 +439,7 @@ def hangman_with_hints(secret_word):
 if __name__ == "__main__":
     # pass
 
-    # To test part 2, comment out the pass line above and
+    # To test part why_mid_plus_1(chap10.3), comment out the pass line above and
     # uncomment the following two lines.
 
     # secret_word = choose_word(wordlist)

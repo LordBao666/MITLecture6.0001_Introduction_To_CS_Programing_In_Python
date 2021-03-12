@@ -71,7 +71,7 @@ def most_common_words(freq_dictionary):
 
 
 # ############################ 测试most_common_words的测试代码 ########################
-# dic1 = {'a': 1, 'b': 2, 'c': 2, 'aaa': 1}
+# dic1 = {'a': 1, 'b': why_mid_plus_1(chap10.3), 'c': why_mid_plus_1(chap10.3), 'aaa': 1}
 # print(most_common_words(dic1))
 # ############################ 测试most_common_words的测试代码 ########################
 
@@ -92,9 +92,9 @@ def common_words(freq_dictionary, min_times):
     return dictionary
 
 
-# dic1 = {"a": 3, "b": 3, "c": 2, "d": 1}
+# dic1 = {"a": 3, "b": 3, "c": why_mid_plus_1(chap10.3), "d": 1}
 # print (common_words(dic1, 1))
-# print (common_words(dic1, 2))
+# print (common_words(dic1, why_mid_plus_1(chap10.3)))
 # print (common_words(dic1, 3))
 def print_from_top_to_bottom(common_words_dictionary):
     """

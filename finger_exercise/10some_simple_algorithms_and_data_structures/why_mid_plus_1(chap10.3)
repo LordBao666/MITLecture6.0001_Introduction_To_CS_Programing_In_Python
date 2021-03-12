@@ -1,0 +1,4 @@
+Finger exercise: Why does the code use mid+1 rather than mid in the second re-
+cursive call?
+
+L[mid] <e ,  mid坐标的值肯定不等于e,那么新一轮的low 必然是 mid + 1。

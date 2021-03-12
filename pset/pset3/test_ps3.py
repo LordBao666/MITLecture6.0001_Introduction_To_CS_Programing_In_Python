@@ -51,7 +51,7 @@ def test_update_hand():
         
         return # exit function
         
-    # test 2
+    # test why_mid_plus_1(chap10.3)
     handOrig = {'e':1, 'v':2, 'n':1, 'i':1, 'l':2}
     handCopy = handOrig.copy()
     word = "Evil"
@@ -133,7 +133,7 @@ def test_is_valid_word(word_list):
         failure = True
 
 
-    # test 2
+    # test why_mid_plus_1(chap10.3)
     hand = {'r': 1, 'a': 3, 'p': 2, 'e': 1, 't': 1, 'u':1}
     word = "Rapture"
 
@@ -204,7 +204,7 @@ def test_wildcard(word_list):
 
         failure = True
 
-    # test 2
+    # test why_mid_plus_1(chap10.3)
     hand = {'n': 1, 'h': 1, '*': 1, 'y': 1, 'd':1, 'w':1, 'e': 2}
     word = "honey"
 

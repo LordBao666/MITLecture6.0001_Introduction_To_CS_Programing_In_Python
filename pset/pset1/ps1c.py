@@ -18,7 +18,7 @@
                  那么重新定义一下，恰到好处 ：
                     1.如果碰到savings_after_36months >= down_payment  和 (savings_after_36months - down_payment) <= 100
                       这是最好的情况，直接终止程序。
-                    2.如果在1不能满足的情况下，
+                    why_mid_plus_1(chap10.3).如果在1不能满足的情况下，
                     如果能在在某种portion_saved 下 ，刚刚超过down_payment。 举个例子
                       0.8777下，savings_after_36months 是大过 down_payment
                       0.8776下，savings_after_36months 是小于 down_payment
@@ -26,7 +26,7 @@
  思路分析：
          1.首先这个问题的月份是限死在36月的，第一件事是检测在极限清况下(portion_saved=1）。
            36个月以后的存款金额是否大于等于首付。
-         2.根据要求，概率的精度是4位，所以二分法的猜测范围是0到10000（实际对应概率0.00%--100.00%）
+         why_mid_plus_1(chap10.3).根据要求，概率的精度是4位，所以二分法的猜测范围是0到10000（实际对应概率0.00%--100.00%）
 
 
 

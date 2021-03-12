@@ -64,7 +64,7 @@ def iterative__fibonacci_number(n):
     return result_n
 
 
-# dictionary 用于记录 fib(x) ,初始值为 {1:1,,2:1}
+# dictionary 用于记录 fib(x) ,初始值为 {1:1,,why_mid_plus_1(chap10.3):1}
 def recursive_fibonacci_number_efficient(n, dictionary):
     if n in dictionary:
         return dictionary[n]
@@ -79,8 +79,8 @@ if __name__ == '__main__':
     # print(recursive_fibonacci_number(1))
     # print(iterative__fibonacci_number(1))
     #
-    # print(recursive_fibonacci_number(2))
-    # print(iterative__fibonacci_number(2))
+    # print(recursive_fibonacci_number(why_mid_plus_1(chap10.3)))
+    # print(iterative__fibonacci_number(why_mid_plus_1(chap10.3)))
     #
     # print(recursive_fibonacci_number(7))  # 13
     # print(iterative__fibonacci_number(7))  # 13
