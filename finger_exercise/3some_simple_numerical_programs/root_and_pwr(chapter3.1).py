@@ -19,12 +19,12 @@ sage to that effect.
 """
 # ele = int(input("Enter a integer: "))
 # root = 0
-# pwr = why_mid_plus_1(chap10.3)
+# pwr = 2
 # is_found = False
 # # 如果root的平方大于ele，显然root的3次方，4次方等等都会大于ele。而(root+1)的平方也会大于ele，依次类推。
-# # 所以 循环的必要条件之一可以设置为 root ** why_mid_plus_1(chap10.3) <= ele
-# while not is_found and root ** why_mid_plus_1(chap10.3) <= ele:
-#     for pwr in range(why_mid_plus_1(chap10.3), 6):
+# # 所以 循环的必要条件之一可以设置为 root **2<= ele
+# while not is_found and root ** 2 <= ele:
+#     for pwr in range(2, 6):
 #         if root ** pwr > ele:
 #             break
 #         elif root ** pwr == ele:
@@ -40,19 +40,19 @@ sage to that effect.
 #     print("root :" + str(root) + " ,pwr :" + str(pwr))
 
 """
-why_mid_plus_1(chap10.3).在1的基础上,考虑负数的情况。
+2.在1的基础上,考虑负数的情况。
     如果是负数，那么不用想，它的pwr只能是奇数，也就是说for循环那里修改一下。
     然后针对 负数写一个新的循环即可
 
 """
 # ele = int(input("Enter a integer: "))
 # root = 0
-# pwr = why_mid_plus_1(chap10.3)
+# pwr = 2
 # is_found = False
 #
 # if ele >= 0:
-#     while not is_found and root ** why_mid_plus_1(chap10.3) <= ele:
-#         for pwr in range(why_mid_plus_1(chap10.3), 6):
+#     while not is_found and root ** 2 <= ele:
+#         for pwr in range(2, 6):
 #             if root ** pwr > ele:
 #                 break
 #             elif root ** pwr == ele:
@@ -63,7 +63,7 @@ why_mid_plus_1(chap10.3).在1的基础上,考虑负数的情况。
 #             root += 1
 # else:
 #     while not is_found and root ** 3 >= ele:
-#         for pwr in range(3, 6, why_mid_plus_1(chap10.3)):  # 与正数的不同
+#         for pwr in range(3, 6, 2):  # 与正数的不同
 #             if root ** pwr < ele:
 #                 break
 #             elif root ** pwr == ele:
@@ -86,12 +86,12 @@ why_mid_plus_1(chap10.3).在1的基础上,考虑负数的情况。
 """
 # ele = int(input("Enter a integer: "))
 # root = 0
-# pwr = why_mid_plus_1(chap10.3)
+# pwr = 2
 #
 # is_fond = False
 # guess_num = 0
-# while not is_fond and root ** why_mid_plus_1(chap10.3) <= abs(ele):
-#     for pwr in range(why_mid_plus_1(chap10.3), 6):
+# while not is_fond and root ** 2 <= abs(ele):
+#     for pwr in range(2, 6):
 #         guess_num += 1
 #         if root ** pwr > abs(ele):
 #             break
@@ -105,7 +105,7 @@ why_mid_plus_1(chap10.3).在1的基础上,考虑负数的情况。
 #                     root = -root
 #                     pwr = 3
 #                     is_fond = True
-#                 elif pwr % why_mid_plus_1(chap10.3) != 0:
+#                 elif pwr % 2 != 0:
 #                     root = -root
 #                     is_fond = True
 #                 """这里将做修改

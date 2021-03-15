@@ -4,6 +4,8 @@
 @Date    : 2021/3/3
 
 问题描述： 计算有多少个月之后，存款到达首付。相比ps1a,ps1b的变化是MIT的毕业生的工资每6个月会增薪。
+           这个不难.假设月份是6月的倍数的时候，用monthly_salary照常计算当月current_savings,然后再更新monthly_salary即可
+         ，这样就可以保证下个月的monthly_salary是更新后的工资。
 """
 annual_salary = float(input("Enter your annual salary: "))
 portion_saved = float(input("Enter the percent of your salary to save, as a decimal: "))

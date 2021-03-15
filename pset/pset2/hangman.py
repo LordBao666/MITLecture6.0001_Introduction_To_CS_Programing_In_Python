@@ -1,4 +1,4 @@
-# Problem Set why_mid_plus_1(chap10.3), hangman.py
+# Problem Set 2, hangman.py
 # Name: 
 # Collaborators:
 # Time spent:
@@ -59,8 +59,12 @@ def is_word_guessed(secret_word, letters_guessed):
       assumes that all letters are lowercase
     returns: boolean, True if all the letters of secret_word are in letters_guessed;
       False otherwise
+    e.g
+    secret_word = apple ,letters_guessed = ['a','p','m','n','l','e'] ,返回True
+    secret_word = apple ,letters_guessed = ['p','m','n','l','e'] ,返回False
     '''
-    # 存储已经在letters_guessed检测通过的单词
+
+    # 存储已经在letters_guessed检测通过的字母
     already_checked_list = []
     for char in secret_word:
         #  如果单词已经在检查通过的单词中出现过，那么直接跳出当次循环
@@ -87,6 +91,10 @@ def get_guessed_word(secret_word, letters_guessed):
     letters_guessed: list (of letters), which letters have been guessed so far
     returns: string, comprised of letters, underscores (_), and spaces that represents
       which letters in secret_word have been guessed so far.
+
+    e.g
+    secret_word ="apple",letters_guessed = ['a','l','e'] ,返回"a_ _ le"
+    secret_word ="apple",letters_guessed = ['p','m','e'] ,返回"_ pp_ e"
     '''
     # 存储已经在letters_guessed检测通过的单词
     already_checked_list = []
@@ -115,6 +123,8 @@ def get_available_letters(letters_guessed):
     letters_guessed: list (of letters), which letters have been guessed so far
     returns: string (of letters), comprised of letters that represents which letters have not
       yet been guessed.
+      e.g letters_guessed = ['e', 'i', 'k', 'p', 'r', 's']  return "abcdfghjlmnoqtuvwxyz"
+
     '''
 
     available_letters = string.ascii_lowercase
@@ -125,10 +135,10 @@ def get_available_letters(letters_guessed):
 
 def handle_invalid_input_letter(current_guess_letter, letters_guessed, warning_left, guesses_left):
     '''
-    :param guesses_left: literal
-    :param warning_left: literal
-    :param current_guess_letter: str( length ==1 ),the current guess letter
-    :param letters_guessed :  letters which have been guessed
+    :param guesses_left: int , the number of times that the user still can guess
+    :param warning_left: int, the number of  warnings left
+    :param current_guess_letter: string（length ==1）,the current guess letter
+    :param letters_guessed : list of letters ,letters which have been guessed
     :return: a tuple(warning_left,guesses_left,valid_type)  valid_type 0 表示正常 1表示不是字母 2表示是已经猜过的字母
     '''
     valid_type = 0
@@ -147,6 +157,12 @@ def handle_invalid_input_letter(current_guess_letter, letters_guessed, warning_l
 
 
 def total_score(secret_word, guesses_remaining):
+    """
+    secret_word: string, the word the user is guessing
+    guesses_remaining : int,the number of times that the user still can guess
+    return the score based on secret_word and guesses_remaining
+    e.g secret_word = "apple", 去掉重复字母，那么就有4个字母。假设guesses_remaining = 4. 那么返回3*4 = 12
+    """
     letter_list = []
     for char in secret_word:
         if char not in letter_list:
@@ -273,6 +289,7 @@ def match_with_gaps(my_word, other_word):
     # 去掉空白符
     my_word = my_word.replace(' ', '')
 
+    # 处理 ("a_ ple", "apple") 这种情况，需要用 guessed_list来记录已经猜测过的单词
     guessed_list = []
     if len(my_word) == len(other_word):
 
@@ -326,6 +343,7 @@ def show_possible_matches(my_word):
         if count % 15 == 0:
             s1 = s1[:-1]
         print(s1)
+
 
 def hangman_with_hints(secret_word):
     '''
@@ -439,7 +457,7 @@ def hangman_with_hints(secret_word):
 if __name__ == "__main__":
     # pass
 
-    # To test part why_mid_plus_1(chap10.3), comment out the pass line above and
+    # To test part 2, comment out the pass line above and
     # uncomment the following two lines.
 
     # secret_word = choose_word(wordlist)
@@ -469,7 +487,6 @@ if __name__ == "__main__":
     # show_possible_matches("abbbb_ ")
     # show_possible_matches("a_ pl_ ")
 
-      # hangman_with_hints("apple")
+    # hangman_with_hints("apple")
     secret_word = choose_word(wordlist)
     hangman_with_hints(secret_word)
-

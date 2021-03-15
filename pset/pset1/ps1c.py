@@ -6,6 +6,8 @@
 问题描述： 1M元的房子，看能不能在36月里面给出首付，如果不能，打印不能的提示。如果能，打印
           每个月将工资的多少来存储的概率并打印二分法猜测的次数。
 
+          初始的salary由我们自己定，而portion_saved即为所求。
+思路分析：
           注意：  根据题目：
                  所谓的最好  指的是在  portion_saved下，   36个月之后的存款肯定是要超过首付的。
                  但是又不至于超得太多，而是恰到好处，恰到好处是指超出的金额刚好在100美元以内。
@@ -16,18 +18,18 @@
                  所以在这种精度下，我们并一定不能满足 所谓的  '恰到好处'。
 
                  那么重新定义一下，恰到好处 ：
-                    1.如果碰到savings_after_36months >= down_payment  和 (savings_after_36months - down_payment) <= 100
-                      这是最好的情况，直接终止程序。
-                    why_mid_plus_1(chap10.3).如果在1不能满足的情况下，
-                    如果能在在某种portion_saved 下 ，刚刚超过down_payment。 举个例子
+                    情况1.如果碰到savings_after_36months >= down_payment  和 (savings_after_36months - down_payment) <= 100
+                      这是最好的情况，直接终止程序。（满足这种条件的概率可能不止一个)
+                    情况2.在1不能满足的情况下，
+                    如果能在某种portion_saved 下 ，刚刚超过down_payment。 举个例子
                       0.8777下，savings_after_36months 是大过 down_payment
                       0.8776下，savings_after_36months 是小于 down_payment
                     那么这个portion_saved将是满足情况的。
- 思路分析：
+具体步骤：
          1.首先这个问题的月份是限死在36月的，第一件事是检测在极限清况下(portion_saved=1）。
            36个月以后的存款金额是否大于等于首付。
-         why_mid_plus_1(chap10.3).根据要求，概率的精度是4位，所以二分法的猜测范围是0到10000（实际对应概率0.00%--100.00%）
-
+         2.根据要求，概率的精度是4位，所以二分法的猜测范围是0到10000（实际对应概率0.00%--100.00%）
+           我们根据重新定义的  最好的portion_saved来检测答案。
 
 
 """
@@ -79,23 +81,26 @@ def main():
 
             portion_saved = half / 10000
             savings_after_36months = savings(36, annual_salary, portion_saved)
-            # # down_payment是25 0000
-            # print("guess " + str(num_guesses) + ":" + "half=" + str(half) + ",savings=" + str(
-            #     savings_after_36months))
+
             if savings_after_36months >= down_payment and (savings_after_36months - down_payment) <= 100:
                 break
             else:
+                # 当half/10000 对应的portion_saved计算的savings 大于down_payment,那么代表half/10000过大。
+                # 那么将end 赋值为 half ,这样的话end/10000 将保证计算出来的savings 是大于down_payment。
+                # 反之,begin/10000 将保证计算出来的savings 是小于down_payment的。
                 # 如果是上面最终的第2个情况,那么begin端一直小于down_payment,end端一直大于down_payment。
-                # 极限是 当 begin 和 end 相差1的时候，end对应的portion_saved即为答案
+                # 基于这种性质,极限是当 end 和 begin相差1时 ，end对应的portion_saved即为答案。
+                # 也就是说循环进行条件是 end -1 >begin,为了区分这种情况2和情况1,,只需判断 begin>= end-1 即可
                 if savings_after_36months > down_payment:
                     # end = half - 1可能不太好，我们考虑上述的定义的第2个恰到好处的话
                     # 比如刚好在half这里是刚刚好超过down_payment，而half-1却小于down_payment
-                    # 这就失去了我们想要的答案。也就是说我们一直能保证在end处一定是大于down_payment的
+                    # 这就失去了我们想要的答案。也就是说我们要一直能保证在end处一定是大于down_payment的
                     # end = half - 1
                     end = half
                 else:
-                    # begin = half + 1  也许可行。
-                    # 但是为了简便思考,将begin端一直当做是小于down_payment的
+                    # begin = half + 1  也许可行。 但是为了简便思考,将begin端一直当做是小于down_payment的（此处不可能是等于,
+                    # 假若是等于。那么savings_after_36months >= down_payment and (savings_after_36months - down_payment) <= 100
+                    # 这个条件是会成立的
                     begin = half
             half = (begin + end) // 2
             # print("begin:" + str(begin) + ",end:" + str(end))

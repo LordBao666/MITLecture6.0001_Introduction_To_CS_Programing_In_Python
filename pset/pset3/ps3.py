@@ -90,7 +90,7 @@ def get_word_score(word, n):
             and n is the hand length when the word was played
 
 	Letters are scored as in Scrabble; A is worth 1, B is
-	worth 3, C is worth 3, D is worth why_mid_plus_1(chap10.3), E is worth 1, and so on.
+	worth 3, C is worth 3, D is worth 2, E is worth 1, and so on.
 
     word: string
     n: int >= 0
@@ -118,7 +118,7 @@ def display_hand(hand):
     Displays the letters currently in the hand.
 
     For example:
-       display_hand({'a':1, 'x':why_mid_plus_1(chap10.3), 'l':3, 'e':1})
+       display_hand({'a':1, 'x':2, 'l':3, 'e':1})
     Should print out something like:
        a x x l l l e
     The order of the letters is unimportant.
@@ -183,7 +183,7 @@ def deal_hand(n):
 
 
 #
-# Problem #why_mid_plus_1(chap10.3): Update a hand by removing letters
+# Problem #2: Update a hand by removing letters
 #
 def update_hand(hand, word):
     """
@@ -253,7 +253,7 @@ def is_valid_word(word, hand, word_list):
     #             del hand[char]
     #     else:
     #         return False
-    # # 这个hand应该指的是 开局时 用户的hand  {'n': 1, 'h': 1, 'o': 1, 'y': 1, 'd': 1, 'w': 1, 'e': why_mid_plus_1(chap10.3)}
+    # # 这个hand应该指的是 开局时 用户的hand  {'n': 1, 'h': 1, 'o': 1, 'y': 1, 'd': 1, 'w': 1, 'e': 2}
     # # honey是返回true的,所有下面这行代码应该不需要
     # # if len(hand) != 0:
     # #     return False
@@ -271,7 +271,7 @@ def is_valid_word(word, hand, word_list):
                 del hand[char]
         else:
             return False
-    # 这个hand应该指的是 开局时 用户的hand  {'n': 1, 'h': 1, 'o': 1, 'y': 1, 'd': 1, 'w': 1, 'e': why_mid_plus_1(chap10.3)}
+    # 这个hand应该指的是 开局时 用户的hand  {'n': 1, 'h': 1, 'o': 1, 'y': 1, 'd': 1, 'w': 1, 'e': 2}
     # honey是返回true的,所有下面这行代码应该不需要
     # if len(hand) != 0:
     #     return False
@@ -383,9 +383,9 @@ def substitute_hand(hand, letter):
     Has no side effects: does not mutate hand.
 
     For example:
-        substitute_hand({'h':1, 'e':1, 'l':why_mid_plus_1(chap10.3), 'o':1}, 'l')
+        substitute_hand({'h':1, 'e':1, 'l':2, 'o':1}, 'l')
     might return:
-        {'h':1, 'e':1, 'o':1, 'x':why_mid_plus_1(chap10.3)} -> if the new letter is 'x'
+        {'h':1, 'e':1, 'o':1, 'x':2} -> if the new letter is 'x'
     The new letter should not be 'h', 'e', 'l', or 'o' since those letters were
     already in the hand.
     
@@ -512,6 +512,6 @@ if __name__ == '__main__':
     # hand = {"a": 1, "c": 1, "f": 1, "i": 1, "*": 1, "t": 1, "x": 1}
     word_list = load_words()
     # play_hand(hand, word_list)
-    # substitute_hand({'h': 1, 'e': 1, 'l': why_mid_plus_1(chap10.3), 'o': 1}, 'l')
+    # substitute_hand({'h': 1, 'e': 1, 'l': 2, 'o': 1}, 'l')
     play_game(word_list)
 #
